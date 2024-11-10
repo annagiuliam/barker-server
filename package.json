@@ -1,0 +1,22 @@
+{
+  "name": "barker-server",
+  "version": "1.0.0",
+  "description": "server for barker social media app",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annagiuliam/barker-server.git"
+  },
+  "author": "agm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/annagiuliam/barker-server/issues"
+  },
+  "homepage": "https://github.com/annagiuliam/barker-server#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
