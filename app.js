@@ -1,15 +1,22 @@
 require("dotenv").config();
 const express = require('express');
-
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
 const db = require('./connection');
 const PORT = process.env.PORT || 3000;
 
+//Routers
+const authRouter = require('./routes/authRouter');
+
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
 app.use(bodyParser.json());
 
-// Connect to MySQL
+app.use('/auth', authRouter);
 
 
 // Routes
@@ -24,9 +31,15 @@ app.get('/accounts', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
   res.send('Hello World!')
 })
+
+
+
+app.get('/home', function (req, res) {
+  res.send('Welcome back, ' + req.session.username + '!');
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
